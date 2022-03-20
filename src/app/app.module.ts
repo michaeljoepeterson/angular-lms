@@ -7,18 +7,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ScormService } from './services/scorm.service';
+import { ScormServiveFactory } from './services/scorm.service.provider';
 
-//@ts-ignore
-window.API = {
-  LMSInitialize: () => 'true',
-  LMSFinish: () => 'true',
-  LMSGetValue:(element:any) => '',
-  LMSSetValue:(element:any, value:any) => '',
-  LMSCommit:(str:any) => '',
-  LMSGetLastError:() => '',
-  LMSGetErrorString:(errorCode:any) => '',
-  LMSGetDiagnostic:(errocCode:any) => ''
-};
 
 @NgModule({
   declarations: [
@@ -30,9 +22,16 @@ window.API = {
     BrowserModule,
     BrowserAnimationsModule,
     NgbModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide:ScormService,
+      useFactory:ScormServiveFactory,
+      deps:[HttpClient]
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

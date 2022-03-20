@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ScormService } from '../../../../services/scorm.service';
 
 @Component({
   selector: 'app-course-page',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CoursePageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private scormService:ScormService
+  ) { }
 
   ngOnInit(): void {
   }
