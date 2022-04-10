@@ -11,6 +11,6 @@ export class ScormService {
     private http:HttpClient,
     private scormApi:ScormApi
   ) { 
-    console.log('service',this.http,scormApi);
+    console.log('service',this.http,this.scormApi);
   }
 }

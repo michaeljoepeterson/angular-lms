@@ -6,6 +6,6 @@ export const ScormServiveFactory = (http:HttpClient) => {
     let scormApi = new ScormApi();
     //@ts-ignore
     window.API = scormApi;
-
+    console.log(window);
     return new ScormService(http,scormApi);
 }
